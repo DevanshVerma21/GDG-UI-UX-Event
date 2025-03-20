@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Reserve At Ochoco</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            overflow-x: hidden;
+            background-color: #fcfcfc;
+        }
+        
+        header {
+    
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.4s ease;
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        header.scrolled {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            width: 150px;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-right: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #bf9b72;
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .location {
+            color: black;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .location i {
+            margin-right: 10px;
+            color: #bf9b72;
+        }
+        
+        .hero {
+            position: relative;
+            top: 30%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(WhatsApp\ Image\ 2025-03-20\ at\ 5.35.40\ PM.jpeg); /* Replace with your first image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            padding-left: 5%;
+        }
+        
+        .hero-content {
+            color: white;
+
+            max-width: 50%;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero-content h1 {
+            font-size: 60px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            max-width: 90%;
+        }
+        
+        .waiting-list-form {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255,255,255,0.95);
+            padding: 40px;
+            width: 350px;
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            animation: slideInRight 1.2s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateY(-50%) translateX(80px); }
+            to { opacity: 1; transform: translateY(-50%) translateX(0); }
+        }
+        
+        .waiting-list-form h2 {
+            text-align: center;
+            color: #bf9b72;
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 22px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .form-group label {
+            position: absolute;
+            top: 10px;
+            left: 5px;
+            color: #999;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .form-group input:focus ~ label,
+        .form-group input:not(:placeholder-shown) ~ label {
+            top: -15px;
+            left: 0;
+            font-size: 12px;
+            color: #bf9b72;
+        }
+        
+        .waiting-list-form input {
+            width: 100%;
+            padding: 10px 5px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            outline: none;
+            font-size: 14px;
+            background-color: transparent;
+            transition: border-color 0.3s ease;
+        }
+        
+        .waiting-list-form input:focus {
+            border-bottom: 2px solid #bf9b72;
+        }
+        
+        .waiting-list-form button {
+            width: 100%;
+            padding: 15px;
+            background-color: #bf9b72;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 15px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .waiting-list-form button:hover {
+            background-color: #a88964;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .floor-plans {
+            padding: 100px 5%;
+            background-color: #fdfdfd;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            color: #bf9b72;
+            font-weight: 400;
+            font-size: 36px;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+        
+        .section-title h3 {
+            font-size: 48px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h3:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: #bf9b72;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .floor-plan-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .floor-plan-tab {
+            padding: 12px 25px;
+            margin: 0 8px 15px;
+            background-color: #f5f5f5;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .floor-plan-tab:hover {
+            background-color: #e0e0e0;
+            transform: translateY(-2px);
+        }
+        
+        .floor-plan-tab.active {
+            background-color: #bf9b72;
+            color: white;
+            box-shadow: 0 5px 15px rgba(191, 155, 114, 0.3);
+        }
+        
+        .floor-plan-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .floor-plan-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            padding: 20px;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+        
+        .floor-plan-image.animate {
+            animation: fadeInLeft 0.8s ease-out;
+        }
+        
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .floor-plan-image img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .floor-plan-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .floor-plan-description {
+            flex: 1;
+            padding: 20px 40px;
+            min-width: 300px;
+            transition: opacity 0.5s ease;
+        }
+        
+        .floor-plan-description.animate {
+            animation: fadeInRight 0.8s ease-out;
+        }
+        
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .floor-plan-description h4 {
+            font-size: 24px;
+            color: #bf9b72;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .floor-plan-description p {
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #555;
+            font-size: 16px;
+        }
+        
+        .floor-plan-stats {
+            display: flex;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            margin-right: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .stat-item span {
+            font-size: 14px;
+            color: #777;
+        }
+        
+        .stat-item strong {
+            display: block;
+            font-size: 20px;
+            color: #333;
+        }
+        
+        .schedule-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #bf9b72;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(191, 155, 114, 0.3);
+        }
+        
+        .schedule-button:hover {
+            background-color: #a88964;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .features {
+            display: flex;
+            min-height: 600px;
+            overflow: hidden;
+        }
+        
+        .features-image {
+            flex: 1;
+            background-size: cover;
+            background-position: center;
+            transition: all 0.8s ease;
+            position: relative;
+        }
+        
+        .features-image:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.4), transparent);
+        }
+        
+        .features-content {
+            flex: 1;
+            background-color: #bf9b72;
+            color: white;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .features-content h2 {
+            font-size: 42px;
+            margin-bottom: 60px;
+            line-height: 1.2;
+            position: relative;
+        }
+        
+        .features-content h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: white;
+            bottom: -20px;
+            left: 0;
+        }
+        
+        .feature-item {
+            display: none;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .feature-item.active {
+            display: block;
+        }
+        
+        .feature-item h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .feature-item p {
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 16px;
+            max-width: 90%;
+        }
+        
+        .feature-controls {
+            display: flex;
+            margin-top: 40px;
+        }
+        
+        .feature-control {
+            width: 50px;
+            height: 50px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+        
+        .feature-control:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: scale(1.1);
+        }
+        
+        .testimonials {
+            padding: 100px 5%;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .testimonial-slide {
+            padding: 40px;
+            display: none;
+        }
+        
+        .testimonial-slide.active {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+        
+        .testimonial-content {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .testimonial-content:before,
+        .testimonial-content:after {
+            content: '"';
+            font-size: 60px;
+            color: #bf9b72;
+            position: absolute;
+            opacity: 0.3;
+        }
+        
+        .testimonial-content:before {
+            top: -20px;
+            left: -20px;
+        }
+        
+        .testimonial-content:after {
+            bottom: -40px;
+            right: -20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .testimonial-role {
+            color: #bf9b72;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin: 0 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-dot.active {
+            background-color: #bf9b72;
+            transform: scale(1.2);
+        }
+        
+        footer {
+            background-color: #1a1a2e;
+            color: white;
+            padding: 60px 5%;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #bf9b72;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h4:after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background-color: #bf9b72;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p {
+            line-height: 1.8;
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact span {
+            display: block;
+            margin-bottom: 10px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .footer-contact i {
+            color: #bf9b72;
+            margin-right: 10px;
+        }
+        
+        .footer-links a {
+            display: block;
+            color: #aaa;
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #bf9b72;
+            transform: translateX(5px);
+        }
+        
+        .footer-social {
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            text-align: center;
+            line-height: 36px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background-color: #bf9b72;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .footer-bottom p {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .footer-bottom .logo {
+            width: 100px;
+        }
+        
+        .footer-bottom .accessibility {
+            display: flex;
+        }
+        
+        .footer-bottom .accessibility-icon {
+            margin-left: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            color: white;
+        }
+        
+        .footer-bottom .accessibility-icon:hover {
+            transform: scale(1.2);
+            color: #bf9b72;
+        }
+        
+        /* Animation classes */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+        }
+        
+        .reveal.fade-bottom {
+            transform: translateY(50px);
+        }
+        
+        .reveal.fade-bottom.active {
+            transform: translateY(0);
+        }
+        
+        .reveal.fade-left {
+            transform: translateX(-50px);
+        }
+        
+        .reveal.fade-left.active {
+            transform: translateX(0);
+        }
+        
+        .reveal.fade-right {
+            transform: translateX(50px);
+        }
+        
+        .reveal.fade-right.active {
+            transform: translateX(0);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .features-content {
+                padding: 60px 40px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-content {
+                max-width: 70%;
+            }
+            
+            .waiting-list-form {
+                right: 50%;
+                transform: translate(50%, -50%);
+                top: 80%;
+            }
+            
+            .features {
+                flex-direction: column;
+            }
+            
+            .features-image, .features-content {
+                flex: none;
+                width: 100%;
+            }
+            
+            .features-image {
+                height: 400px;
+            }
+            
+            .features-content {
+                padding: 60px 5%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            
+            header.scrolled {
+                padding: 10px 20px;
+            }
+            
+            .logo {
+                width: 100px;
+            }
+            
+            nav ul li {
+                margin-right: 15px;
+            }
+            
+            nav ul li a {
+                font-size: 12px;
+            }
+            
+            .hero-content {
+                max-width: 90%;
+                padding-right: 20px;
+            }
+            
+            .hero-content h1 {
+                font-size: 40px;
+            }
+            
+            .hero-content p {
+                font-size: 16px;
+            }
+            
+            .waiting-list-form {
+                width: 90%;
+                top: 85%;
+            }
+            
+            .floor-plans {
+                padding: 80px 20px;
+            }
+            
+            .floor-plan-description {
+                padding: 20px;
+            }
+            
+            .testimonial-content {
+                font-size: 18px;
+            }
+            
+            .footer-column {
+                flex: 100%;
+                margin-bottom: 40px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-bottom .accessibility {
+                margin-top: 20px;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 32px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .section-title h3 {
+                font-size: 36px;
+            }
+            
+            .features-content h2 {
+                font-size: 32px;
+            }
+            
+            .feature-item h3 {
+                font-size: 20px;
+            }
+        }
+        
+        /* Mobile menu styles */
+        .mobile-menu-button {
+            display: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-button {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 80vh;
+                background-color: rgba(0,0,0,0.9);
+                padding: 80px 40px;
+                transition: all 0.5s ease;
+                z-index: 1000;
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 0 0 30px 0;
+            }
+            
+            nav ul li a {
+                font-size: 18px;
+            }
+            
+            .location {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <img src="logo1.png" alt="The Reserve at Ochoco" class="logo">
+        
+        <div class="mobile-menu-button">
+            <i class="fas fa-bars"></i>
+        </div>
+        
+        <nav id="nav">
+            <ul>
+                <li><a href="#" class="active">HOME</a></li>
+                <li><a href="#floor-plans">FLOOR PLANS</a></li>
+                <li><a href="#features">FEATURES</a></li>
+                <li><a href="#testimonials">TESTIMONIALS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+        
+        <div class="location">
+            <i class="fas fa-map-marker-alt"></i> PRINEVILLE, OREGON
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInUp">THE RESERVE<br>AT OCHOCO</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">Experience luxury living in Prineville's premier residential community. Discover the perfect blend of modern comfort, stunning natural surroundings, and thoughtful amenities.</p>
+        </div>
+        <div class="waiting-list-form animate__animated animate__fadeInRight animate__delay-1s">
+            <h2 style="top: 100%;">JOIN OUR WAITING LIST</h2>
+            <div class="form-group">
+                <input type="text" id="name" placeholder=" ">
+                <label for="name">YOUR NAME</label>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="phone" placeholder=" ">
+                <label for="phone">PHONE NUMBER</label>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" placeholder=" ">
+                <label for="email">EMAIL ADDRESS</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="interest" placeholder=" ">
+                <label for="interest">WHAT ARE YOU INTERESTED IN?</label>
+            </div>
+            <button>JOIN WAITING LIST</button>
+        </div>
+    </section>
+
+    <section class="floor-plans reveal fade-bottom" id="floor-plans">
+        <div class="section-title">
+            <h2>DISCOVER OUR</h2>
+            <h3>FLOOR PLANS</h3>
+        </div>
+        
+        <div class="floor-plan-tabs">
+            <div class="floor-plan-tab active" data-tab="studio">STUDIO</div>
+            <div class="floor-plan-tab" data-tab="one-bedroom">1 BEDROOM</div>
+            <div class="floor-plan-tab" data-tab="two-bedroom">2 BEDROOM</div>
+            <div class="floor-plan-tab" data-tab="two-bedroom-deluxe">2 BEDROOM DELUXE</div>
+            <div class="floor-plan-tab" data-tab="three-bedroom">3 BEDROOM</div>
+        </div>
+        
+        <div class="floor-plan-content">
+            <div class="floor-plan-image">
+                <img src="studio.jpeg" alt="Studio Floor Plan" id="floor-plan-img">
+            </div>
+            <div class="floor-plan-description">
+                <h4 id="floor-plan-title">STUDIO APARTMENT</h4>
+                <p id="floor-plan-text">Embrace modern living with convenient amenities and a welcoming community atmosphere. Perfectly designed for comfort and style, these studio homes offer an ideal retreat after a long day. Explore all that Prineville has to offer while enjoying the serenity of your own space.</p>
+                <a href="#" class="schedule-button">SCHEDULE</a>
+                </div>
+                </div>
+                    
+                    <div class="floor-plan-content">
+                        <div class="floor-plan-image">
+                            
+                        </div>
+                        <div class="floor-plan-description">
+                        </div>
+                    </div>
+                </section>
+            
+                <section class="features">
+                    <div class="features-image" id="feature-image"></div>
+                    <div class="features-content">
+                        <h2>BUILDING<br>FEATURES</h2>
+                        
+                        <div class="feature-item active" id="feature-fitness">
+                            <h3>24 HOUR FITNESS</h3>
+                            <p>Our 24-hour fitness center is right at your doorstep! Get fit, stay healthy, and enjoy the convenience of working out whenever you want. Your dream apartment community just got even better!</p>
+                        </div>
+                        
+                        <div class="feature-item" id="feature-dog-park">
+                            <h3>DOG PARK</h3>
+                            <p>Let your furry friends run and play in our spacious dog park. A perfect spot for your pets to socialize and exercise. We love our four-legged residents just as much as you do!</p>
+                        </div>
+                        
+                        <div class="feature-item" id="feature-gated">
+                            <h3>GATED COMMUNITY</h3>
+                            <p>Enjoy the peace of mind that comes with living in our secure, gated community. With controlled access and enhanced security measures, you can rest easy knowing that your home is protected.</p>
+                        </div>
+                        
+                        <div class="feature-item" id="feature-fire-pit">
+                            <h3>FIRE PIT LOUNGES</h3>
+                            <p>Gather with friends and neighbors around our cozy fire pit lounges. Perfect for evening relaxation, social gatherings, or simply enjoying the beautiful Prineville nights under the stars.</p>
+                        </div>
+                        
+                        <div class="feature-item" id="feature-luxer">
+                            <h3>LUXER ONE PACKAGE</h3>
+                            <p>Experience seamless convenience with our Luxer One package holder at our apartment community. Your packages are secure, and accessible, making modern living even more enjoyable!</p>
+                        </div>
+                        
+                        <div class="feature-controls">
+                            <div class="feature-control" id="prev-feature">←</div>
+                            <div class="feature-control" id="next-feature">→</div>
+                        </div>
+                    </div>
+                </section>
+                
+                
+            
+                <footer>
+                    <img src="logo1.png" alt="The Reserve at Ochoco" class="logo">
+                    <p>© 2023 The Reserve At Ochoco</p>
+                    <nav>
+                        <ul>
+                            <li><a href="#">HOME</a></li>
+                            <li><a href="#">FLOOR PLANS</a></li>
+                            <li><a href="#">FEATURES</a></li>
+                        </ul>
+                    </nav>
+                    <div class="accessibility">
+                        <div class="accessibility-icon">♿</div>
+                        <div class="accessibility-icon">🏠</div>
+                    </div>
+                </footer>
+            
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        // Set hero background image with gradient overlay
+                        document.querySelector('.hero').style.backgroundImage = "linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(mounatin2.jpeg)";
+                        
+                        // Floor plan tabs functionality
+                        const floorPlanTabs = document.querySelectorAll('.floor-plan-tab');
+                        const floorPlanImg = document.getElementById('floor-plan-img');
+                        const floorPlanText = document.getElementById('floor-plan-text');
+                        
+                        const floorPlanData = {
+                            'studio': {
+                                img: 'studio.jpeg',
+                                text: 'Embrace modern living with convenient amenities and a welcoming community atmosphere. Perfectly designed for comfort and style, these studio homes offer an ideal retreat after a long day. Explore all that Prineville has to offer while enjoying the serenity of your own space. Your new home awaits!'
+                            },
+                            'one-bedroom': {
+                                img: '1bedroom.jpeg',
+                                text: 'Our one-bedroom apartments combine spaciousness with functionality. Featuring modern design elements and quality finishes, these homes provide the perfect balance of comfort and style. Enjoy an open-concept living area, a well-appointed kitchen, and a private bedroom retreat.'
+                            },
+                            'two-bedroom': {
+                                img: '2bedroom.jpeg',
+                                text: 'Our two-bedroom floor plans offer ample space for roommates, families, or those who desire extra room. With generous living areas and well-designed bedrooms, these apartments provide the perfect setting for both entertaining and private relaxation.'
+                            },
+                            'two-bedroom-deluxe': {
+                                img: '2deluxe.jpeg',
+                                text: 'Experience luxury living in our two-bedroom deluxe apartments. These premium homes feature enhanced finishes, additional square sootage, and upgraded appliances. Enjoy extra closet space, larger bedrooms, and a more spacious layout than our standard two-bedroom options.'
+                            },
+                            'three-bedroom': {
+                                img: '3deluxe.jpeg',
+                                text: 'Our largest floor plans offer three bedrooms for maximum space and flexibility. Perfect for families or those who need separate spaces for work, guests, or hobbies. These apartments provide generous living areas while maintaining a sense of privacy for all residents.'
+                            }
+                        };
+                        
+                        floorPlanTabs.forEach(tab => {
+                            tab.addEventListener('click', function() {
+                                // Remove active class from all tabs
+                                floorPlanTabs.forEach(t => t.classList.remove('active'));
+                                // Add active class to clicked tab
+                                this.classList.add('active');
+                                
+                                // Update content based on selected tab
+                                const tabType = this.getAttribute('data-tab');
+                                floorPlanImg.src = floorPlanData[tabType].img;
+                                floorPlanText.textContent = floorPlanData[tabType].text;
+                                
+                                // Animation effect
+                                floorPlanImg.style.opacity = '0';
+                                floorPlanText.style.opacity = '0';
+                                
+                                setTimeout(() => {
+                                    floorPlanImg.style.opacity = '1';
+                                    floorPlanText.style.opacity = '1';
+                                }, 200);
+                            });
+                        });
+                        
+                        // Building features carousel functionality
+                        const featureItems = document.querySelectorAll('.feature-item');
+                        const featureImage = document.getElementById('feature-image');
+                        const nextFeature = document.getElementById('next-feature');
+                        const prevFeature = document.getElementById('prev-feature');
+                        
+                        // Feature data with images and corresponding feature IDs
+                        const featureData = [
+                            { id: 'feature-fitness', image: 'D:\gdg event\gym.jpeg' },
+                            { id: 'feature-dog-park', image: '/api/placeholder/800/600' },
+                            { id: 'feature-gated', image: '/api/placeholder/800/600' },
+                            { id: 'feature-fire-pit', image: '/api/placeholder/800/600' },
+                            { id: 'feature-luxer', image: '/api/placeholder/800/600' }
+                        ];
+                        
+                        let currentFeatureIndex = 0;
+                        
+                        // Initialize the first feature
+                        featureImage.style.backgroundImage = `url(${featureData[currentFeatureIndex].image})`;
+                        
+                        // Function to show a specific feature
+                        function showFeature(index) {
+                            // Hide all features
+                            featureItems.forEach(item => {
+                                item.classList.remove('active');
+                            });
+                            
+                            // Show the selected feature
+                            document.getElementById(featureData[index].id).classList.add('active');
+                            
+                            // Change the image with fade effect
+                            featureImage.style.opacity = '0';
+                            setTimeout(() => {
+                                featureImage.style.backgroundImage = `url(${featureData[index].image})`;
+                                featureImage.style.opacity = '1';
+                            }, 300);
+                        }
+                        
+                        // Next feature button
+                        nextFeature.addEventListener('click', function() {
+                            currentFeatureIndex = (currentFeatureIndex + 1) % featureData.length;
+                            showFeature(currentFeatureIndex);
+                        });
+                        
+                        // Previous feature button
+                        prevFeature.addEventListener('click', function() {
+                            currentFeatureIndex = (currentFeatureIndex - 1 + featureData.length) % featureData.length;
+                            showFeature(currentFeatureIndex);
+                        });
+                        
+                        // Auto-rotate features every 5 seconds
+                        setInterval(() => {
+                            currentFeatureIndex = (currentFeatureIndex + 1) % featureData.length;
+                            showFeature(currentFeatureIndex);
+                        }, 8000);
+                        
+                        // Add scroll animation for sections
+                        const sections = document.querySelectorAll('section');
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    entry.target.style.opacity = '1';
+                                    entry.target.style.transform = 'translateY(0)';
+                                }
+                            });
+                        }, { threshold: 0.1 });
+                        
+                        sections.forEach(section => {
+                            section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                            section.style.opacity = '0';
+                            section.style.transform = 'translateY(20px)';
+                            observer.observe(section);
+                        });
+                        
+                        // Form validation
+                        const form = document.querySelector('.waiting-list-form');
+                        const formInputs = form.querySelectorAll('input');
+                        const formButton = form.querySelector('button');
+                        
+                        formButton.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            let valid = true;
+                            
+                            formInputs.forEach(input => {
+                                if (!input.value.trim()) {
+                                    input.style.borderBottom = '1px solid red';
+                                    valid = false;
+                                } else {
+                                    input.style.borderBottom = '1px solid #ccc';
+                                }
+                            });
+                            
+                            if (valid) {
+                                formButton.textContent = 'REQUEST SENT!';
+                                formButton.style.backgroundColor = '#4CAF50';
+                                
+                                setTimeout(() => {
+                                    formButton.textContent = 'SEND REQUEST';
+                                    formButton.style.backgroundColor = '#bf9b72';
+                                    formInputs.forEach(input => {
+                                        input.value = '';
+                                    });
+                                }, 2000);
+                            }
+                        });
+                    });
+                </script>
+            </body>
+            </html>
