@@ -4,8 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Reserve At Ochoco</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="icon" type="image/x-icon" href="logo1.png">
+
     <style>
         * {
             margin: 0;
@@ -582,131 +586,90 @@
             transform: scale(1.2);
         }
         
-        footer {
-            background-color: #1a1a2e;
-            color: white;
-            padding: 60px 5%;
-        }
-        
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-column h4 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            color: #bf9b72;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-column h4:after {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 2px;
-            background-color: #bf9b72;
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-column p {
-            line-height: 1.8;
-            color: #aaa;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-        
-        .footer-contact span {
-            display: block;
-            margin-bottom: 10px;
-            color: #aaa;
-            font-size: 14px;
-        }
-        
-        .footer-contact i {
-            color: #bf9b72;
-            margin-right: 10px;
-        }
-        
-        .footer-links a {
-            display: block;
-            color: #aaa;
-            text-decoration: none;
-            margin-bottom: 10px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: #bf9b72;
-            transform: translateX(5px);
-        }
-        
-        .footer-social {
-            margin-top: 20px;
-        }
-        
-        .footer-social a {
-            display: inline-block;
-            width: 36px;
-            height: 36px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            margin-right: 10px;
-            text-align: center;
-            line-height: 36px;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-social a:hover {
-            background-color: #bf9b72;
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .footer-bottom p {
-            font-size: 14px;
-            color: #888;
-        }
-        
-        .footer-bottom .logo {
-            width: 100px;
-        }
-        
-        .footer-bottom .accessibility {
-            display: flex;
-        }
-        
-        .footer-bottom .accessibility-icon {
-            margin-left: 15px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            color: white;
-        }
-        
-        .footer-bottom .accessibility-icon:hover {
-            transform: scale(1.2);
-            color: #bf9b72;
-        }
+        /* General Footer Styling */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    margin-bottom: 20px;
+}
+
+.footer-logo .logo {
+    width: 150px;
+    height: auto;
+}
+
+footer p {
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: 300;
+}
+
+.footer-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.footer-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+    color: #ff8c00;
+}
+
+.footer-social {
+    margin: 20px 0;
+}
+
+.social-icon {
+    margin: 0 10px;
+    color: #fff;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #ff8c00;
+}
+
+.accessibility {
+    margin-top: 20px;
+}
+
+.accessibility-icon {
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+@media (max-width: 768px) {
+    .footer-nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+    
+    .footer-social {
+        margin-top: 10px;
+    }
+}
+
         
         /* Animation classes */
         .reveal {
@@ -928,7 +891,7 @@
             <ul>
                 <li><a href="#" class="active">HOME</a></li>
                 <li><a href="#floor-plans">FLOOR PLANS</a></li>
-                <li><a href="#features">FEATURES</a></li>
+                <li><a href="#feature-image">FEATURES</a></li>
                 <li><a href="#testimonials">TESTIMONIALS</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
@@ -999,7 +962,7 @@
                         </div>
                     </div>
                 </section>
-            
+                
                 <section class="features">
                     <div class="features-image" id="feature-image"></div>
                     <div class="features-content">
@@ -1040,21 +1003,40 @@
                 
             
                 <footer>
-                    <img src="logo1.png" alt="The Reserve at Ochoco" class="logo">
-                    <p>© 2023 The Reserve At Ochoco</p>
-                    <nav>
-                        <ul>
-                            <li><a href="#">HOME</a></li>
-                            <li><a href="#">FLOOR PLANS</a></li>
-                            <li><a href="#">FEATURES</a></li>
-                        </ul>
-                    </nav>
-                    <div class="accessibility">
-                        <div class="accessibility-icon">♿</div>
-                        <div class="accessibility-icon">🏠</div>
-                    </div>
+                    <div class="footer-container">
+                        <!-- Logo Section -->
+                        <div class="footer-logo">
+                            <img src="logo1.png" alt="The Reserve at Ochoco" class="logo">
+                            <p>© 2023 The Reserve At Ochoco</p>
+                        </div>
+                
+                        <!-- Navigation Links Section -->
+                        <nav class="footer-nav">
+                            <ul>
+                                <li><a href="welcome.html">HOME</a></li>
+                                <li><a href="welcome.html" target="_parent">FLOOR PLANS</a></li>
+                                <li><a href="welcome.html" target="_self">FEATURES</a></li>
+                            </ul>
+                        </nav>
+                
+                        <!-- Social Media Section -->
+                        <div class="footer-social">
+                            <a href="#" class="social-icon" aria-label="Linkdein">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                
                 </footer>
+                
             
+
+
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
                         // Set hero background image with gradient overlay
@@ -1119,8 +1101,8 @@
                         
                         // Feature data with images and corresponding feature IDs
                         const featureData = [
-                            { id: 'feature-fitness', image: 'gym.jpeg' },
-                            { id: 'feature-dog-park', image: 'dogpark.jpeg' },
+                            { id: 'feature-fitness', image: 'gym2.jpg' },
+                            { id: 'feature-dog-park', image: 'dog.jpeg' },
                             { id: 'feature-gated', image: 'gated.jpeg' },
                             { id: 'feature-fire-pit', image: 'firepit.jpeg' },
                             { id: 'feature-luxer', image: 'luxer.jpeg' }
